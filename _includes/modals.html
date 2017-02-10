@@ -1,7 +1,55 @@
 <div class="modal fade in" id="emailform" tabindex="-1" role="dialog" aria-labelledby="#" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-        
+        <form action="https://formspree.io/oliverullman@gmail.com" method="POST">
+      <div class="modal-body text-left">
+        <button id="closeButton" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2>Send Us a Message</h2>
+        <div>
+          <div class='form-group'>
+            <div class="input">
+              <label class="text">
+                Your Name
+              </label>
+              <input aria-required="true" class="string text form-control" maxlength="255" name="Name" placeholder="Jane Smith" type="text" value="" id="profile_name" required/>
+            </div>
+          </div>
+
+          <div class='form-group'>
+            <div class="input">
+              <label class="text">
+                Email Address
+              </label>
+              <input aria-required="true" class="string text form-control" maxlength="255"  name="_replyto" id="profile_email" placeholder="janesmith@example.com" type="text" value="" required/>
+            </div>
+          </div>
+            
+          <div class='form-group'>
+            <div class="input">
+              <label class="text">
+                Phone
+              </label>
+              <input aria-required="true" class="string text form-control" maxlength="255"  name="Phone" id="profile_phone" placeholder="janesmith@example.com" type="text" value="" required/>
+            </div>
+          </div>
+            
+          <div class='form-group'>
+            <div class="field-box">
+              <label class="text">Message</label>
+              <textarea class="form-control" id="profile_message" name="Message" rows="4" required></textarea>
+            </div>
+          </div>
+          <label><input id="profile_listserve"  type="checkbox" checked > Yes, I would like to be added to your mailing list.</label>
+        </div>
+            
+      </div><!-- modal body -->
+
+      <div class="modal-footer">
+        <div data-dismiss="modal" class='form-actions text-center'>
+            <button id="update_profile_submit" class="button btn btn-success" name="Submit" data-dismiss="modal" aria-label="Close">Submit</button>
+        </div>
+      </div>
+    </form>
 
     </div>
   </div>
