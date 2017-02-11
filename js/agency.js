@@ -128,7 +128,7 @@ function serviceExpansionLargeScreen(target) {
     $(this).css('cursor', 'auto')
 }
 $('.col-md-4').on('click', function() {
-    serviceExpansion(this);
+    serviceExpansionLargeScreen(this);
 })
 
 // Auto opens the click effect on scroll 
