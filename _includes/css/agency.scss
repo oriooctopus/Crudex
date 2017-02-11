@@ -874,6 +874,36 @@ body {
 
 
 /* Personal */
+@media(min-width: 851px) {
+    #services .col-md-4 h2, .clickableService ul, .clickableService p, .servicesButton {
+        position: absolute;
+    }
+    .clickableService {
+        transform: translateY(-50%);
+    }
+    .clickableService ul {
+        left: 50.5%;
+    }
+    .servicesButton {
+        left: 7.5%;
+    }
+}
+@media(max-width: 850px) {
+    .clickableService {
+        top: 0%;
+    }
+    .clickableService p, .clickableService h2 {
+        text-align: center !important;
+    }
+    #services .col-md-4 h2 {
+        text-align: center;
+        transform: translateX(0%) !important;
+    }
+    .clickableService p {
+        width: 100% !important;
+    }
+}
+
 nav {
     display: none;
 }
@@ -895,7 +925,6 @@ header #overlay {
         font-size: 58px;
     }
 }
-
 #services {
     padding-top: 0px;
     padding-bottom: 0px !important;
@@ -910,39 +939,20 @@ header #overlay {
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-#services .col-md-4, #services .col-md-4 h2, #services .col-md-4 img {
-   
-}
 #services .col-md-4:hover h2 {
     font-size: 36px;
     letter-spacing: .9px;
 }
-/*#services .col-md-4:hover img {
-    width: 105%;
-    margin-left: -2.5%;
-}*/
 #services .background {
     background-color: black;
 }
 #services .col-md-4 img, .across img {
     width: 100%;
 }
-#services #overlay {
-    position: absolute;
-    width: 100%;
-    background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2));
-    z-index: 10;
-}
-@media(max-width: 850px) {
-    .clickableService {
-        top: 0%;
-    }
-}
 .clickableService {
     position: absolute;
-    width: 100%;
     top: 10%;
-    transform: translateY(-50%);
+    width: 100%;
     color: white;
     z-index: 10;
 }
@@ -951,7 +961,6 @@ header #overlay {
     margin-right: 0 !important;
 }
 #services .col-md-4 h2 {
-    position: absolute;
     transform: translateX(-50%);
     white-space: nowrap;
     text-align: left;
@@ -970,13 +979,8 @@ header #overlay {
     display: none;
 }
 .clickableService p {
-    position: absolute;
     text-align: left;
     width: 35%;
-}
-.clickableService ul {
-    left: 50.5%;
-    position: absolute;
 }
 .clickableService li {
     width: 105%;
@@ -985,11 +989,9 @@ header #overlay {
     text-align: left;
 }
 .servicesButton {
-    position: absolute;
     background-color: white;
     color: black;
     margin-top: 30px;
-    left: 7.5%;
     transition: .2s;
 }
 .servicesButton:hover {
@@ -1002,7 +1004,8 @@ header #overlay {
 /* About */
 #about {
     background-color: #0a0a0a !important;
-    padding-top: 75px;
+    padding-top: 55px;
+    margin-top: 40px;
     color: white !important;
 }
 #lastTimeline .timeline-image, #lastTimeline .timeline-body{

@@ -37,10 +37,10 @@ $('div.modal').on('show.bs.modal', function() {
 });
 
 // Overlays
-
+var maxWidth = 850;
 function resizeServicesOverlay() {
-    var height = $('#services').height();
-    //$('#services .col-md-4').height(height);
+    var height = $('#services .col-md-4').width();
+    $('#services .col-md-4').height(height);
 }
 function colWidth() {
     var colWidth = $('#services .col-md-4').width();
@@ -85,16 +85,16 @@ function serviceExpansionLargeScreen(target) {
     }, 30)*/
     serviceClicked = true;
     var $all = $('.col-md-4');
-    $all.not(target).animate({
-        width: secondaryWidth
-    }, 300)
-    
-    setTimeout(function() {
-        $(target).animate({
-            width: primaryWidth
-        },300)
-    }, 3.5)
-        
+    if (window.innerWidth > maxWidth) {
+         $all.not(target).animate({
+            width: secondaryWidth
+        }, 300)
+        setTimeout(function() {
+            $(target).animate({
+                width: primaryWidth
+            },300)
+        }, 3.5)
+    }
     $all.not(target).find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8))');
     $all.not(target).find('h2').css('opacity', '0')
         .css('font-size', '16px')
@@ -127,6 +127,58 @@ function serviceExpansionLargeScreen(target) {
     $(target).find('hr').css('display', 'none');
     $(this).css('cursor', 'auto')
 }
+function serviceExpansionSmallScreen(target) {
+    onePunch++;
+    $(target).find('h2').css('transition', '0s')
+        .css('opacity', '0');
+    /*$(target).find('img').animate({
+        opacity: .05
+    }, 30)*/
+    serviceClicked = true;
+    var $all = $('.col-md-4');
+    if (window.innerWidth > maxWidth) {
+         $all.not(target).animate({
+            width: secondaryWidth
+        }, 300)
+        setTimeout(function() {
+            $(target).animate({
+                width: primaryWidth
+            },300)
+        }, 3.5)
+    }
+    $all.not(target).find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8))');
+    $all.not(target).find('h2').css('opacity', '0')
+        .css('font-size', '16px')
+        .css('position', 'relative')
+        .css('transform', 'translateX(0%)')
+        .css('text-align', 'center')
+        .css('left', '0px')
+        .css('padding-top', '65px')
+        .css('opacity', '1');
+    $all.not(target).find('p').css('left', '0px');
+    $all.not(target).find('img').css('margin-top', '27%')
+        .css('height', 'auto')
+        .css('display', 'block');
+    //$all.not(target).find('img').css('height', 'auto');
+    $all.not(target).find('ul, p').css('display', 'none');
+    $all.not(target).find('hr').css('display', 'block');
+    $all.not(target).find('h2').css('transition', '.2s');
+    $(target).find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.95), rgba(0,0,0,.95))');
+    $(target).find('h2').css('width', '100%')
+        .css('font-size', '36px')
+        .css('left', leftAmount)
+        .css('text-align', 'left')
+        .css('transform', 'translateX(-50%)')
+        .css('padding-top', '0px')
+        .css('opacity', '1');
+    $(target).find('img').css('display', 'none');
+    $(target).find('p').css('display', 'block');
+    $(target).find('ul').css('display', 'block');
+    $(target).find('p').css('left', leftAmount - $(target).find('h2').width()/2);
+    $(target).find('hr').css('display', 'none');
+    $(this).css('cursor', 'auto')
+}
+
 $('.col-md-4').on('click', function() {
     serviceExpansionLargeScreen(this);
 })
@@ -135,11 +187,12 @@ $('.col-md-4').on('click', function() {
 var onePunch = 0;
 setTimeout(function() {
     $(window).scroll(function() {
-       if ($(window).scrollTop() > 500 && onePunch === 0 && window.innerWidth > 850) {
+       if ($(window).scrollTop() > 500 && onePunch === 0 && window.innerWidth > maxWidth) {
             onePunch++;
             serviceExpansionLargeScreen('#left');
         } else if ($(window).scrollTop() > 500 && onePunch === 0) {
-            
+            onePunch++;
+            serviceExpansionSmallScreen('#left');
         }
     })
 }, 1000)
