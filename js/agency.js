@@ -40,9 +40,7 @@ $('div.modal').on('show.bs.modal', function() {
 
 function resizeServicesOverlay() {
     var height = $('#services').height();
-    $('#services #overlay').height(height);
-    $('#services .background').height(height);
-    $('#services .across').height(height);
+    //$('#services .col-md-4').height(height);
 }
 function colWidth() {
     var colWidth = $('#services .col-md-4').width();
@@ -78,9 +76,10 @@ var headerMargin = $('.clickableService h2').css('margin-top');
 var headerHeight = Number($('.clickableService h2').height()) + Number(headerMargin.substring(0, headerMargin.length -2)) + 15;
 $('.clickableService p, .clickableService ul').css('top', headerHeight);
 
-function serviceExpansion(target) {
+function serviceExpansionLargeScreen(target) {
     onePunch++;
-    $(target).find('h2').css('transition', '0s');
+    $(target).find('h2').css('transition', '0s')
+        .css('opacity', '0');
     /*$(target).find('img').animate({
         opacity: .05
     }, 30)*/
@@ -112,13 +111,15 @@ function serviceExpansion(target) {
     //$all.not(target).find('img').css('height', 'auto');
     $all.not(target).find('ul, p').css('display', 'none');
     $all.not(target).find('hr').css('display', 'block');
+    $all.not(target).find('h2').css('transition', '.2s');
     $(target).find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.95), rgba(0,0,0,.95))');
     $(target).find('h2').css('position', 'absolute')
         .css('font-size', '36px')
         .css('left', leftAmount)
         .css('text-align', 'left')
         .css('transform', 'translateX(-50%)')
-        .css('padding-top', '0px');
+        .css('padding-top', '0px')
+        .css('opacity', '1');
     $(target).find('img').css('display', 'none');
     $(target).find('p').css('display', 'block');
     $(target).find('ul').css('display', 'block');
@@ -134,9 +135,11 @@ $('.col-md-4').on('click', function() {
 var onePunch = 0;
 setTimeout(function() {
     $(window).scroll(function() {
-       if ($(window).scrollTop() > 500 && onePunch === 0) {
+       if ($(window).scrollTop() > 500 && onePunch === 0 && window.innerWidth > 850) {
             onePunch++;
-            serviceExpansion('#left');
+            serviceExpansionLargeScreen('#left');
+        } else if ($(window).scrollTop() > 500 && onePunch === 0) {
+            
         }
     })
 }, 1000)

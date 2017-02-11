@@ -8,6 +8,7 @@
  */
 
 body {
+    background-color: black !important;
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #{{ site.data.template.color.secondary-dark }};
@@ -898,6 +899,7 @@ header #overlay {
 #services {
     padding-top: 0px;
     padding-bottom: 0px !important;
+    background-color: black;
 }
 #services .row {
     margin-left: 0 !important;
@@ -930,6 +932,11 @@ header #overlay {
     width: 100%;
     background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2));
     z-index: 10;
+}
+@media(max-width: 850px) {
+    .clickableService {
+        top: 0%;
+    }
 }
 .clickableService {
     position: absolute;
@@ -983,21 +990,50 @@ header #overlay {
     color: black;
     margin-top: 30px;
     left: 7.5%;
+    transition: .2s;
+}
+.servicesButton:hover {
+    color: black;
+    border-radius: 11%;
+    margin-top: 27px;
+    font-size: 15.3px;
 }
 
 /* About */
 #about {
-    background-color: black !important;
+    background-color: #0a0a0a !important;
     padding-top: 75px;
-    padding-bottom: 0;
     color: white !important;
+}
+#lastTimeline .timeline-image, #lastTimeline .timeline-body{
+    position: absolute;
+    
+}
+.sectionSeparator {
+    width: 15%;
+    color: white;
+    margin-top: 35px;
+    margin-bottom: 95px;
 }
 
 /* Modal */
 .modal-content {
     color: black;
 }
-.modal-content button {
+.modal h2 {
+    color: #ba1616;
+    margin-bottom: 30px;
+}
+textarea {
+    color:white;
+}
+
+/* Team */
+#team {
+    background-color: black;
+    color: white !important;  
+    padding-top: 40px;
+}
+ul.social-buttons li a {
     background-color: #ba1616;
-    color: white;
 }
