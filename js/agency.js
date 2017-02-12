@@ -180,7 +180,12 @@ function serviceExpansionSmallScreen(target) {
 }
 
 $('.col-md-4').on('click', function() {
-    serviceExpansionLargeScreen(this);
+    if ($(window).innerWidth > maxWidth) {
+        serviceExpansionLargeScreen(this);
+    } else {
+        serviceExpansionSmallScreen(this);
+    }
+    
 })
 
 // Auto opens the click effect on scroll 
@@ -190,7 +195,7 @@ setTimeout(function() {
        if ($(window).scrollTop() > 500 && onePunch === 0 && window.innerWidth > maxWidth) {
             onePunch++;
             serviceExpansionLargeScreen('#left');
-        } else if ($(window).scrollTop() > 500 && onePunch === 0) {
+        } else if ($(window).scrollTop() > 150 && onePunch === 0) {
             onePunch++;
             serviceExpansionSmallScreen('#left');
         }

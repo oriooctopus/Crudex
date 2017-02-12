@@ -11,7 +11,7 @@ body {
     background-color: black !important;
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #{{ site.data.template.color.secondary-dark }};
+    color: white;
 }
 
 .text-muted {
@@ -273,9 +273,9 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url('{{ site.baseurl }}/img/headerbg-dark2.jpg');
+    background-image: url('{{ site.baseurl }}/img/header-bg.png');
     background-position: center center;
-    background-repeat: none;
+    background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -868,6 +868,7 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: #{{ site.data.template.color.primary }};
+    overflow-x: hidden;
 }
 
 
@@ -888,9 +889,33 @@ body {
         left: 7.5%;
     }
 }
+
 @media(max-width: 850px) {
+    header {
+        background-image: url('/img/header-bg-small-screen.png');
+    }
+    header .intro-text {
+        padding-top: 0px !important;
+    }
+    header .intro-lead-in {
+        margin-top: 0px;
+        margin-bottom: 0px !important;
+        padding-top: 25px;
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+    }
+    header .intro-heading {
+        margin-top: 10px;
+        margin-left: 10%;
+        width: 80%;
+        font-size: 21px !important;
+        line-height: 1.4 !important;
+    }
+    #services {
+        margin-top: 100px;
+    }
     .clickableService {
-        top: 0%;
+        top: 0% !important;
     }
     .clickableService p, .clickableService h2 {
         text-align: center !important;
@@ -900,26 +925,39 @@ body {
         transform: translateX(0%) !important;
     }
     .clickableService p {
-        width: 100% !important;
+        width: 80% !important;
+        margin-left: 10%;
+    }
+    .clickableService ul {
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+    
+    #lastTimeline {
+        margin-bottom: 180px;
     }
 }
 
 nav {
     display: none;
 }
+
 header #overlay {
     background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9));
     width: 100%;
     position: absolute;
 }
+
 .intro-text {
     padding-top: 530px !important;
     padding-bottom: 70px !important;
     z-index: 5;
 }
+
 .intro-text a {
     display: none;
 }
+
 @media(min-width:768px) {
     header .intro-text .intro-heading {
         font-size: 58px;
