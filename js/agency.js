@@ -50,7 +50,7 @@ function colWidth() {
 }
 
 function resizeImages() {
-    var height = $('#services.col-md-4').width();
+    var height = $('#services .col-md-4').width();
     $('#services .col-md-4 img').height(height);
 }
 resizeImages();
@@ -75,6 +75,7 @@ var secondaryWidth = window.innerWidth * .13;
 var headerMargin = $('.clickableService h2').css('margin-top');
 var headerHeight = Number($('.clickableService h2').height()) + Number(headerMargin.substring(0, headerMargin.length -2)) + 15;
 $('.clickableService p, .clickableService ul').css('top', headerHeight);
+$('.clickableService hr').css('margin-top', headerHeight);
 
 function serviceExpansionLargeScreen(target) {
     onePunch++;
@@ -84,7 +85,7 @@ function serviceExpansionLargeScreen(target) {
         opacity: .05
     }, 30)*/
     serviceClicked = true;
-    var $all = $('.col-md-4');
+    var $all = $('#services .col-md-4');
     if (window.innerWidth > maxWidth) {
          $all.not(target).animate({
             width: secondaryWidth
@@ -110,7 +111,8 @@ function serviceExpansionLargeScreen(target) {
         .css('display', 'block');
     //$all.not(target).find('img').css('height', 'auto');
     $all.not(target).find('ul, p').css('display', 'none');
-    $all.not(target).find('hr').css('display', 'block');
+    $all.not(target).find('hr').css('display', 'block')
+        .css('margin-top', 0);
     $all.not(target).find('h2').css('transition', '.2s');
     $(target).find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.95), rgba(0,0,0,.95))');
     $(target).find('h2').css('position', 'absolute')
@@ -135,7 +137,7 @@ function serviceExpansionSmallScreen(target) {
         opacity: .05
     }, 30)*/
     serviceClicked = true;
-    var $all = $('.col-md-4');
+    var $all = $('#services .col-md-4');
     if (window.innerWidth > maxWidth) {
          $all.not(target).animate({
             width: secondaryWidth
@@ -146,7 +148,6 @@ function serviceExpansionSmallScreen(target) {
             },300)
         }, 3.5)
     }
-    $all.not(target).find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8))');
     $all.not(target).find('h2').css('opacity', '0')
         .css('font-size', '16px')
         .css('position', 'relative')
@@ -160,27 +161,25 @@ function serviceExpansionSmallScreen(target) {
         .css('height', 'auto')
         .css('display', 'block');
     //$all.not(target).find('img').css('height', 'auto');
+    $all.not(target).find('.clickableService').css('position', 'absolute');
     $all.not(target).find('ul, p').css('display', 'none');
-    $all.not(target).find('hr').css('display', 'block');
+    $all.not(target).find('hr').css('display', 'block')
+        .css('margin-top', 0);
     $all.not(target).find('h2').css('transition', '.2s');
-    $(target).find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.95), rgba(0,0,0,.95))');
     $(target).find('h2').css('width', '100%')
         .css('font-size', '36px')
-        .css('left', leftAmount)
-        .css('text-align', 'left')
-        .css('transform', 'translateX(-50%)')
         .css('padding-top', '0px')
         .css('opacity', '1');
+    $(target).find('.clickableService').css('position', 'relative');
     $(target).find('img').css('display', 'none');
     $(target).find('p').css('display', 'block');
     $(target).find('ul').css('display', 'block');
-    $(target).find('p').css('left', leftAmount - $(target).find('h2').width()/2);
     $(target).find('hr').css('display', 'none');
     $(this).css('cursor', 'auto')
 }
 
 $('.col-md-4').on('click', function() {
-    if ($(window).innerWidth > maxWidth) {
+    if (window.innerWidth > maxWidth) {
         serviceExpansionLargeScreen(this);
     } else {
         serviceExpansionSmallScreen(this);
@@ -202,7 +201,35 @@ setTimeout(function() {
     })
 }, 1000)
 
-// Form
+// Modal
 $('.servicesButton').click(function() {
     $('.modal').modal('show');
 });
+
+$('#initialButtonContainer button:first-child').click(function() {
+    $('#initialButtonContainer').animate({
+      opacity: 0  
+    }, 'slow')
+    setTimeout(function() {
+        $('#initialButtonContainer').css('display','none');
+    })
+    $('.formSpree').css('display', 'block');
+    $('.formSpree').animate({
+      opacity: 1 
+    }, 'slow')
+})
+
+$('#initialButtonContainer button:last-child').click(function() {
+    $('#initialButtonContainer').animate({
+      opacity: 0  
+    }, 'slow')
+    setTimeout(function() {
+        $('#initialButtonContainer').css('display','none');
+    })
+    
+    $('.calendly-inline-widget').css('display', 'block')
+        .css('z-index', 1000);
+    $('.calendly-inline-widget').animate({
+      opacity: 1 
+    }, 'slow')
+})
