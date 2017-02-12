@@ -191,10 +191,12 @@ $('.col-md-4').on('click', function() {
 var onePunch = 0;
 setTimeout(function() {
     $(window).scroll(function() {
-       if ($(window).scrollTop() > 500 && onePunch === 0 && window.innerWidth > maxWidth) {
+       if ($(window).scrollTop() > 400 && onePunch === 0 && window.innerWidth > maxWidth) {
+           
             onePunch++;
             serviceExpansionLargeScreen('#left');
-        } else if ($(window).scrollTop() > 150 && onePunch === 0) {
+        } else if ($(window).scrollTop() > 150 && onePunch === 0 && window.innerWidth <= maxWidth) {
+            console.log(1);
             onePunch++;
             serviceExpansionSmallScreen('#left');
         }

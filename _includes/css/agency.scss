@@ -1052,6 +1052,14 @@ header #overlay {
 }
 
 /* Modal */
+@media(max-width: 850px) {
+    #initialButtonContainer {
+        top: 15% !important;
+    }
+    #initialButtonContainer button {
+        margin-bottom: 40px !important;
+    }
+}
 #initialButtonContainer {
     position: absolute; 
     z-index: 100;
@@ -1092,6 +1100,9 @@ header #overlay {
 .checkboxContainer input {
     margin-bottom: 7px;
     margin-left: 5px;
+}
+textarea {
+    color: white;
 }
 .checkboxContainer div:nth-child(even) {
     position: absolute;
