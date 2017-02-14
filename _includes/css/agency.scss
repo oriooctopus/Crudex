@@ -181,14 +181,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .navbar-brand {
     font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: #{{ site.data.template.color.primary }};
-}
-
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:active,
-.navbar-default .navbar-brand.active {
-    color: #{{ site.data.template.color.secondary }};
+    color: white;
 }
 
 .navbar-default .navbar-collapse {
@@ -223,7 +216,7 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
     outline: 0;
-    color: #{{ site.data.template.color.primary }};
+    color: white;
 }
 
 .navbar-default .navbar-nav>.active>a {
@@ -249,7 +242,7 @@ fieldset[disabled] .btn-xl.active {
     }
 
     .navbar-default .navbar-brand {
-        font-size: 2em;
+        font-size: 2.3em;
         -webkit-transition: all .3s;
         -moz-transition: all .3s;
         transition: all .3s;
@@ -904,7 +897,7 @@ body {
         padding-top: 0px !important;
     }
     header .intro-lead-in {
-        margin-top: 0px;
+        margin-top: 15px;
         margin-bottom: 0px !important;
         padding-top: 25px;
         font-size: 19px !important;
@@ -912,6 +905,7 @@ body {
     }
     header .intro-heading {
         margin-top: 10px;
+        margin-bottom: 10px !important;
         margin-left: 10%;
         width: 80%;
         font-size: 12px !important;
@@ -956,25 +950,16 @@ body {
         font-size: 22px !important;
     }
 }
-
-nav {
-    display: none;
-}
-
-header #overlay {
-    background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9));
-    width: 100%;
-    position: absolute;
-}
-
 .intro-text {
     padding-top: 450px !important;
     padding-bottom: 70px !important;
     z-index: 5;
 }
-
 .intro-text a {
     display: none;
+}
+header h5 {
+    text-transform: none;
 }
 #services {
     padding-top: 0px;
@@ -1153,5 +1138,5 @@ textarea {
     padding-top: 40px;
 }
 ul.social-buttons li a {
-    background-color: #ba1616;
+    background-color: #{{ site.data.template.color.secondary }};
 }

@@ -77,13 +77,56 @@ var headerHeight = Number($('.clickableService h2').height()) + Number(headerMar
 $('.clickableService p, .clickableService ul').css('top', headerHeight);
 $('.clickableService hr').css('margin-top', headerHeight);
 
+function reduceLargeScreen() {
+    var $all = $('#services .col-md-4');
+    $all.css('width', '33%');
+    $all.find('p').css('left', '0px');
+    $all.find('img').css('height', 'auto')
+        .css('padding-top', '0')
+        .css('margin-top', '0')
+        .css('display', 'block');
+    $all.find('ul, p').css('display', 'none');
+    $all.find('hr').css('display', 'block')
+        .css('margin-top', 0);
+    $all.find('h2').css('transition', '.2s');
+    $all.find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8))');
+    $all.find('h2').css('opacity', '0')
+        .css('font-size', '36px')
+        .css('position', 'relative')
+        .css('transform', 'translateX(0%)')
+        .css('text-align', 'center')
+        .css('left', '0px')
+        .css('padding-top', '35px')
+        .css('opacity', '1');
+}
+
+function reduceSmallScreen() {
+    var $all = $('#services .col-md-4');
+    $all.css('width', '33%');
+    $all.find('h2').css('opacity', '0')
+        .css('font-size', '36px')
+        .css('position', 'relative')
+        .css('transform', 'translateX(0%)')
+        .css('text-align', 'center')
+        .css('left', '0px')
+        .css('padding-top', '35px')
+        .css('opacity', '1');
+    $all.find('p').css('left', '0px');
+    $all.find('img').css('height', 'auto')
+        .css('padding-top', '0') 
+        .css('margin-top', '0')
+        .css('display', 'block');
+    $all.find('.clickableService').css('position', 'absolute');
+    $all.find('ul, p').css('display', 'none');
+    $all.find('hr').css('display', 'block')
+        .css('margin-top', 0);
+    $all.find('h2').css('transition', '.2s');
+}
+
 function serviceExpansionLargeScreen(target) {
     onePunch++;
     $(target).find('h2').css('transition', '0s')
         .css('opacity', '0');
-    /*$(target).find('img').animate({
-        opacity: .05
-    }, 30)*/
     serviceClicked = true;
     var $all = $('#services .col-md-4');
     if (window.innerWidth > maxWidth) {
@@ -105,15 +148,6 @@ function serviceExpansionLargeScreen(target) {
         .css('left', '0px')
         .css('padding-top', '65px')
         .css('opacity', '1');
-    $all.not(target).find('p').css('left', '0px');
-    $all.not(target).find('img').css('margin-top', '27%')
-        .css('height', 'auto')
-        .css('display', 'block');
-    //$all.not(target).find('img').css('height', 'auto');
-    $all.not(target).find('ul, p').css('display', 'none');
-    $all.not(target).find('hr').css('display', 'block')
-        .css('margin-top', 0);
-    $all.not(target).find('h2').css('transition', '.2s');
     $(target).find('#overlay').css('background', 'linear-gradient(rgba(0,0,0,.95), rgba(0,0,0,.95))');
     $(target).find('h2').css('position', 'absolute')
         .css('font-size', '36px')
@@ -127,45 +161,54 @@ function serviceExpansionLargeScreen(target) {
     $(target).find('ul').css('display', 'block');
     $(target).find('p').css('left', leftAmount - $(target).find('h2').width()/2);
     $(target).find('hr').css('display', 'none');
+    $all.not(target).find('p').css('left', '0px');
+    $all.not(target).find('img').css('margin-top', '27%')
+        .css('height', 'auto')
+        .css('display', 'block');
+    $all.not(target).find('ul, p').css('display', 'none');
+    $all.not(target).find('hr').css('display', 'block')
+        .css('margin-top', 0);
+    $all.not(target).find('h2').css('transition', '.2s');
     $(this).css('cursor', 'auto')
 }
-function serviceExpansionSmallScreen(target) {
+function serviceExpansionSmallScreen(target, boolean) {
     onePunch++;
     $(target).find('h2').css('transition', '0s')
         .css('opacity', '0');
-    /*$(target).find('img').animate({
-        opacity: .05
-    }, 30)*/
     serviceClicked = true;
     var $all = $('#services .col-md-4');
     if (window.innerWidth > maxWidth) {
-         $all.not(target).animate({
-            width: secondaryWidth
-        }, 300)
+        if (boolean) {
+            $all.not(target).animate({
+                width: secondaryWidth
+            }, 300)
+        }
         setTimeout(function() {
             $(target).animate({
                 width: primaryWidth
             },300)
         }, 3.5)
     }
-    $all.not(target).find('h2').css('opacity', '0')
-        .css('font-size', '16px')
-        .css('position', 'relative')
-        .css('transform', 'translateX(0%)')
-        .css('text-align', 'center')
-        .css('left', '0px')
-        .css('padding-top', '65px')
-        .css('opacity', '1');
-    $all.not(target).find('p').css('left', '0px');
-    $all.not(target).find('img').css('margin-top', '27%')
-        .css('height', 'auto')
-        .css('display', 'block');
-    //$all.not(target).find('img').css('height', 'auto');
-    $all.not(target).find('.clickableService').css('position', 'absolute');
-    $all.not(target).find('ul, p').css('display', 'none');
-    $all.not(target).find('hr').css('display', 'block')
-        .css('margin-top', 0);
-    $all.not(target).find('h2').css('transition', '.2s');
+    if (boolean) {
+        $all.not(target).find('h2').css('opacity', '0')
+            .css('font-size', '16px')
+            .css('position', 'relative')
+            .css('transform', 'translateX(0%)')
+            .css('text-align', 'center')
+            .css('left', '0px')
+            .css('padding-top', '65px')
+            .css('opacity', '1');
+        $all.not(target).find('p').css('left', '0px');
+        $all.not(target).find('img').css('margin-top', '27%')
+            .css('height', 'auto')
+            .css('display', 'block');
+        $all.not(target).find('.clickableService').css('position', 'absolute');
+        $all.not(target).find('ul, p').css('display', 'none');
+        $all.not(target).find('hr').css('display', 'block')
+            .css('margin-top', 0);
+        $all.not(target).find('h2').css('transition', '.2s');
+    }
+    
     $(target).find('h2').css('width', '100%')
         .css('font-size', '36px')
         .css('padding-top', '0px')
@@ -182,7 +225,7 @@ $('.col-md-4').on('click', function() {
     if (window.innerWidth > maxWidth) {
         serviceExpansionLargeScreen(this);
     } else {
-        serviceExpansionSmallScreen(this);
+        serviceExpansionSmallScreen(this, true);
     }
     
 })
@@ -191,15 +234,18 @@ $('.col-md-4').on('click', function() {
 var onePunch = 0;
 setTimeout(function() {
     $(window).scroll(function() {
-       if ($(window).scrollTop() > 400 && onePunch === 0 && window.innerWidth > maxWidth) {
-           
+       if ($(window).scrollTop() > 400 && $(window).scrollTop() < 900 && onePunch === 0 && window.innerWidth > maxWidth) {       
             onePunch++;
             serviceExpansionLargeScreen('#left');
         } else if ($(window).scrollTop() > 150 && onePunch === 0 && window.innerWidth <= maxWidth) {
-            console.log(1);
             onePunch++;
-            serviceExpansionSmallScreen('#left');
+            serviceExpansionSmallScreen('#left', false);
+            serviceExpansionSmallScreen('#middle', false);
+            serviceExpansionSmallScreen('#right', false);
         }
+       if ($(window).scrollTop() > 900 && onePunch > 0 && window.innerWidth > maxWidth) {
+           reduceLargeScreen();
+       } 
     })
 }, 1000)
 
