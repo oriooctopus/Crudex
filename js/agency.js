@@ -100,29 +100,6 @@ function reduceLargeScreen() {
         .css('opacity', '1');
 }
 
-function reduceSmallScreen() {
-    var $all = $('#services .col-md-4');
-    $all.css('width', '33%');
-    $all.find('h2').css('opacity', '0')
-        .css('font-size', '36px')
-        .css('position', 'relative')
-        .css('transform', 'translateX(0%)')
-        .css('text-align', 'center')
-        .css('left', '0px')
-        .css('padding-top', '35px')
-        .css('opacity', '1');
-    $all.find('p').css('left', '0px');
-    $all.find('img').css('height', 'auto')
-        .css('padding-top', '0') 
-        .css('margin-top', '0')
-        .css('display', 'block');
-    $all.find('.clickableService').css('position', 'absolute');
-    $all.find('ul, p').css('display', 'none');
-    $all.find('hr').css('display', 'block')
-        .css('margin-top', 0);
-    $all.find('h2').css('transition', '.2s');
-}
-
 function serviceExpansionLargeScreen(target) {
     onePunch++;
     $(target).find('h2').css('transition', '0s')
@@ -189,6 +166,7 @@ function serviceExpansionSmallScreen(target, boolean) {
             },300)
         }, 3.5)
     }
+    $(target).css('height', 'auto');
     if (boolean) {
         $all.not(target).find('h2').css('opacity', '0')
             .css('font-size', '16px')

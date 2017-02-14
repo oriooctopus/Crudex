@@ -912,7 +912,7 @@ body {
         line-height: 1.4 !important;
     }
     #services {
-        margin-top: 100px;
+        margin-top: 60px;
     }
     .clickableService {
         top: 0% !important;
@@ -933,7 +933,9 @@ body {
         padding-left: 30px;
         padding-right: 20px;
     }
-    
+    #services .col-md-4 {
+        margin-bottom: 60px;
+    }
     #lastTimeline {
         margin-bottom: 180px;
     }
