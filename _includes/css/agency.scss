@@ -1112,9 +1112,6 @@ textarea {
     position: absolute;
     
 }
-#about .img-responsive {
-    max-width: 75%;
-}
 .sectionSeparator {
     width: 15%;
     color: white;
@@ -1139,6 +1136,9 @@ textarea {
     background-color: black;
     color: white !important;  
     padding-top: 40px;
+}
+#team .img-responsive {
+    max-width: 75%;
 }
 ul.social-buttons li a {
     background-color: #{{ site.data.template.color.secondary }};
