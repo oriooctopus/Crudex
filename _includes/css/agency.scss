@@ -886,9 +886,15 @@ body {
     .servicesButton {
         left: 7.5%;
     }
+    .intro-heading {
+        margin-top: 30px;
+    }
 }
 
 @media(max-width: 850px) {
+    .navbar-brand img {
+        max-width: 90px;
+    }
     header {
         background-image: url('img/header-bg-small-screen.png');
         padding-bottom: 50px;
@@ -904,6 +910,7 @@ body {
         line-height: 1.5 !important;
     }
     header .intro-heading {
+        padding-top: 60px;
         margin-top: 10px;
         margin-bottom: 10px !important;
         margin-left: 10%;
@@ -954,6 +961,9 @@ body {
     header .intro-heading {
         font-size: 22px !important;
     }
+}
+.navbar-brand img {
+    max-width: 140px;
 }
 .intro-text {
     padding-top: 450px !important;
@@ -1108,9 +1118,9 @@ textarea {
 /* About */
 #about {
     background-color: #0a0a0a !important;
-    padding-top: 55px;
-    padding-bottom: 80px;
-    margin-top: 40px;
+    padding-top: 95px;
+    padding-bottom: 90px;
+    margin-top: 25px;
     color: white !important;
 }
 #lastTimeline .timeline-image {
@@ -1140,7 +1150,18 @@ textarea {
 #team {
     background-color: black;
     color: white !important;  
-    padding-top: 40px;
+    padding-top: 90px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+}
+#team .section-subheading {
+    margin-bottom: 20px;
+}
+#team ul {
+    width: 60%;
+    margin-left: 20%;
+    line-height: 1.52;
+    margin-bottom: 60px;
 }
 #team .img-responsive {
     max-width: 75%;
