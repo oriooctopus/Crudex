@@ -949,6 +949,10 @@ body {
     .checkboxContainer {
         width: 100% !important;
     }
+    #team ul {
+        width: 90% !important;
+        margin-left: 5% !important;
+    }
 }
 @media(max-width: 850px ) and (min-width: 450px) {
     header {
